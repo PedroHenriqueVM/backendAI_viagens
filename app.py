@@ -1,4 +1,3 @@
-# app.py
 import os
 import json
 from flask import Flask, jsonify, request
@@ -6,8 +5,6 @@ from flask_cors import CORS
 from google import genai
 from google.genai import types
 from dotenv import load_dotenv
-
-# Importando a estrutura atualizada
 from config import ROTEIRO_SCHEMA, SYSTEM_INSTRUCTION
 
 load_dotenv()
