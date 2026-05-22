@@ -5,7 +5,7 @@ ROTEIRO_SCHEMA = {
         "destino": {"type": "STRING", "description": "Cidade e país/estado de destino"},
         "duracao": {"type": "STRING", "description": "Quantidade de dias (ex: '3 dias')"},
         "perfil_orcamento": {"type": "STRING", "description": "O nível de orçamento selecionado (Alto, Médio ou Baixo)"},
-        "estimativa_custo_total": {"type": "STRING", "description": "Uma estimativa geral do custo total aproximado da viagem por pessoa para o perfil escolhido"},
+        "estimativa_custo_total": {"type": "STRING", "description": "Uma estimativa geral do custo total aproximado da viagem por pessoa no perfil escolhido. Se for internacional, mostre na moeda local e a conversão estimada em Reais (ex: '$ 1.200 USD / aprox. R$ 6.200,00')"},
         "roteiro_diario": {
             "type": "ARRAY",
             "description": "Programação passo a passo detalhada por dia cobrindo manhã, tarde e noite",
@@ -23,7 +23,7 @@ ROTEIRO_SCHEMA = {
                                 "nome_do_lugar": {"type": "STRING", "description": "Nome oficial do ponto turístico ou atração"},
                                 "endereco": {"type": "STRING", "description": "Endereço completo ou localização de referência do local para ajudar o turista no GPS"},
                                 "descricao": {"type": "STRING", "description": "Breve descrição histórica, cultural ou prática do lugar"},
-                                "valor": {"type": "STRING", "description": "Custo estimado do ingresso ou taxa de entrada (ex: 'Gratuito', 'R$ 60,00')"}
+                                "valor": {"type": "STRING", "description": "Custo estimado do ingresso. Se for internacional, DEVE conter a moeda local e a conversão aproximada para Real (ex: '€ 25,00 (aprox. R$ 140,00)' ou 'Gratuito')"}
                             },
                             "required": ["periodo", "nome_do_lugar", "endereco", "descricao", "valor"]
                         }
@@ -37,8 +37,8 @@ ROTEIRO_SCHEMA = {
                                 "tipo_refeicao": {"type": "STRING", "description": "Almoço, Jantar ou Café da Manhã"},
                                 "nome_do_estabelecimento": {"type": "STRING", "description": "Nome do restaurante ou estabelecimento"},
                                 "endereco": {"type": "STRING", "description": "Endereço completo do restaurante para o turista localizar facilmente"},
-                                "descricao": {"type": "STRING", "description": "O que pedir ou o estilo gastronomico do ambiente"},
-                                "valor_medio_prato": {"type": "STRING", "description": "Preço médio estimado por pessoa para uma refeição básica no local"}
+                                "descricao": {"type": "STRING", "description": "O que pedir ou o estilo gastronômico do ambiente"},
+                                "valor_medio_prato": {"type": "STRING", "description": "Preço médio estimado por pessoa para uma refeição básica. Se for internacional, DEVE conter a moeda local e a conversão aproximada para Real (ex: '$ 30.00 USD (aprox. R$ 165,00)')"}
                             },
                             "required": ["tipo_refeicao", "nome_do_estabelecimento", "endereco", "descricao", "valor_medio_prato"]
                         }
@@ -62,6 +62,9 @@ Você deve montar a programação com base no destino, na quantidade de dias for
 - 'Alto': Experiências de alto padrão, luxo, alta gastronomia e passeios privativos.
 - 'Médio': Atrações populares com preços justos e restaurantes confortáveis que atendem à maior parte da população de classe média.
 - 'Baixo': Opções econômicas, passeios gratuitos ou de baixo custo, parques públicos e alimentação barata.
+
+REQUISITO CRÍTICO DE MOEDA: Se o destino for FORA do Brasil, para TODO campo de preço/valor (estimativa_custo_total, valor da atividade e valor_medio_prato), você deve obrigatoriamente apresentar o valor na moeda local do país destino E, logo ao lado, a conversão calculada e atualizada para Reais (R$) baseada no câmbio comercial vigente em 2026. 
+Exemplo: "€ 22,00 (aprox. R$ 125,00)" ou "$ 15.00 USD (aprox. R$ 82,00)". Se a viagem for no Brasil, use apenas o formato padrão em R$.
 
 Para cada atração e restaurante sugerido, você DEVE fornecer o nome correto do local, a descrição rica, o valor real estimado e o ENDEREÇO completo ou localização de referência real para colocar no GPS/mapa. Organize as atividades cobrindo de forma lógica o dia inteiro (manhã, tarde e noite).
 Tudo deve ser respondido rigorosamente em português dentro do esquema JSON fornecido.
