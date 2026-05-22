@@ -21,10 +21,11 @@ ROTEIRO_SCHEMA = {
                             "properties": {
                                 "periodo": {"type": "STRING", "description": "Manhã, Tarde ou Noite"},
                                 "nome_do_lugar": {"type": "STRING", "description": "Nome oficial do ponto turístico ou atração"},
+                                "endereco": {"type": "STRING", "description": "Endereço completo ou localização de referência do local para ajudar o turista no GPS"},
                                 "descricao": {"type": "STRING", "description": "Breve descrição histórica, cultural ou prática do lugar"},
                                 "valor": {"type": "STRING", "description": "Custo estimado do ingresso ou taxa de entrada (ex: 'Gratuito', 'R$ 60,00')"}
                             },
-                            "required": ["periodo", "nome_do_lugar", "descricao", "valor"]
+                            "required": ["periodo", "nome_do_lugar", "endereco", "descricao", "valor"]
                         }
                     },
                     "sugestao_gastronomica": {
@@ -35,10 +36,11 @@ ROTEIRO_SCHEMA = {
                             "properties": {
                                 "tipo_refeicao": {"type": "STRING", "description": "Almoço, Jantar ou Café da Manhã"},
                                 "nome_do_estabelecimento": {"type": "STRING", "description": "Nome do restaurante ou estabelecimento"},
-                                "descricao": {"type": "STRING", "description": "O que pedir ou o estilo gastronômico do ambiente"},
+                                "endereco": {"type": "STRING", "description": "Endereço completo do restaurante para o turista localizar facilmente"},
+                                "descricao": {"type": "STRING", "description": "O que pedir ou o estilo gastronomico do ambiente"},
                                 "valor_medio_prato": {"type": "STRING", "description": "Preço médio estimado por pessoa para uma refeição básica no local"}
                             },
-                            "required": ["tipo_refeicao", "nome_do_estabelecimento", "descricao", "valor_medio_prato"]
+                            "required": ["tipo_refeicao", "nome_do_estabelecimento", "endereco", "descricao", "valor_medio_prato"]
                         }
                     }
                 },
@@ -61,7 +63,7 @@ Você deve montar a programação com base no destino, na quantidade de dias for
 - 'Médio': Atrações populares com preços justos e restaurantes confortáveis que atendem à maior parte da população de classe média.
 - 'Baixo': Opções econômicas, passeios gratuitos ou de baixo custo, parques públicos e alimentação barata.
 
-Para cada atração e restaurante sugerido, você DEVE adicionar uma descrição rica do lugar e o valor real estimado cobrado no local. Organize as atividades cobrindo de forma lógica o dia inteiro (manhã, tarde e noite).
+Para cada atração e restaurante sugerido, você DEVE fornecer o nome correto do local, a descrição rica, o valor real estimado e o ENDEREÇO completo ou localização de referência real para colocar no GPS/mapa. Organize as atividades cobrindo de forma lógica o dia inteiro (manhã, tarde e noite).
 Tudo deve ser respondido rigorosamente em português dentro do esquema JSON fornecido.
-Você é somente um Agente de Viagens e um Guia Turístico, você não sabe sobre outros assuntos. Caso o usuário não fale sobre viagens diga que você cimi agente de viagem e guia turístico só sabe sobre assuntos de passeios nas cidades e sobre viagens
+Você é somente um Agente de Viagens e um Guia Turístico, você não sabe sobre outros assuntos. Caso o usuário não fale sobre viagens diga que você como agente de viagem e guia turístico só sabe sobre assuntos de passeios nas cidades e sobre viagens.
 """
