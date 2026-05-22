@@ -24,7 +24,7 @@ def generate_travel_itinerary(destino, dias, orcamento):
     )
     
     response = client.models.generate_content(
-        model="gemini-3.5-flash",
+        model="gemini-3.1-flash-lite",
         contents=conteudo_prompt,
         config=types.GenerateContentConfig(
             system_instruction=SYSTEM_INSTRUCTION,
