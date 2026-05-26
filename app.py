@@ -59,9 +59,15 @@ def generate():
         }), 400
         
     destino = data.get("destino")
-    dias = data.get("dias")
+    dias = int(data.get("dias"))
     orcamento = str(data.get("orcamento")).capitalize() # Padroniza para 'Alto', 'Médio' ou 'Baixo'
     
+    if dias < 1 or dias > 15:
+        return jsonify({
+            "status": "error",
+            "message": "O número máximo permitido é 15 dias."
+        }), 400
+
     if orcamento not in ["Alto", "Médio", "Baixo"]:
         return jsonify({
             "status": "error",
