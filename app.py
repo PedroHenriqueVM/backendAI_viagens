@@ -17,15 +17,13 @@ CORS(app)
 def generate_travel_itinerary(destino, dias, orcamento):
     # Prompt otimizado para gerar roteiros estruturados por tempo e custo
     conteudo_prompt = (
-        conteudo_prompt = (
-            f"Gere um plano de viagem completo para o destino {destino}. "
-            f"O roteiro DEVE conter EXATAMENTE {dias} dias diferentes. "
-            f"Crie obrigatoriamente todos os dias do Dia 1 até o Dia {dias}, "
-            f"sem resumir, sem agrupar e sem pular dias. "
-            f"O orçamento obrigatório é {orcamento}. "
-            f"Cada dia deve possuir atividades diferentes distribuídas em manhã, tarde e noite. "
-            f"As descrições devem ser curtas e objetivas para evitar cortes na resposta."
-        )
+        f"Gere um plano de viagem completo para o destino {destino}. "
+        f"O roteiro DEVE conter EXATAMENTE {dias} dias diferentes. "
+        f"Crie obrigatoriamente todos os dias do Dia 1 até o Dia {dias}, "
+        f"sem resumir, sem agrupar e sem pular dias. "
+        f"O orçamento obrigatório é {orcamento}. "
+        f"Cada dia deve possuir atividades diferentes distribuídas em manhã, tarde e noite. "
+        f"As descrições devem ser curtas e objetivas para evitar cortes na resposta."
     )
     
     response = client.models.generate_content(
