@@ -21,7 +21,7 @@ O sistema permite:
 
 🔗 **API online na Vercel**
 
-https://backendai-viagens.vercel.app/
+https://backend-ai-viagens.vercel.app/
 
 ---
 
