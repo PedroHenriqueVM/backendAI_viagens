@@ -22,7 +22,7 @@ ROTEIRO_SCHEMA = {
                                 "periodo": {"type": "STRING", "description": "Manhã, Tarde ou Noite"},
                                 "nome_do_lugar": {"type": "STRING", "description": "Nome oficial do ponto turístico ou atração"},
                                 "endereco": {"type": "STRING", "description": "Endereço completo ou localização de referência do local para ajudar o turista no GPS"},
-                                "descricao": {"type": "STRING", "description": "Breve descrição histórica, cultural ou prática do lugar"},
+                                "descricao": {"type": "STRING", "description": "Descrição curta e objetiva do local"},
                                 "valor": {"type": "STRING", "description": "Custo estimado do ingresso. Se for internacional, DEVE conter a moeda local e a conversão aproximada para Real (ex: '€ 25,00 (aprox. R$ 140,00)' ou 'Gratuito')"}
                             },
                             "required": ["periodo", "nome_do_lugar", "endereco", "descricao", "valor"]
@@ -37,7 +37,7 @@ ROTEIRO_SCHEMA = {
                                 "tipo_refeicao": {"type": "STRING", "description": "Almoço, Jantar ou Café da Manhã"},
                                 "nome_do_estabelecimento": {"type": "STRING", "description": "Nome do restaurante ou estabelecimento"},
                                 "endereco": {"type": "STRING", "description": "Endereço completo do restaurante para o turista localizar facilmente"},
-                                "descricao": {"type": "STRING", "description": "O que pedir ou o estilo gastronômico do ambiente"},
+                                "descricao": {"type": "STRING", "description": "Descrição curta da comida ou restaurante"},
                                 "valor_medio_prato": {"type": "STRING", "description": "Preço médio estimado por pessoa para uma refeição básica. Se for internacional, DEVE conter a moeda local e a conversão aproximada para Real (ex: '$ 30.00 USD (aprox. R$ 165,00)')"}
                             },
                             "required": ["tipo_refeicao", "nome_do_estabelecimento", "endereco", "descricao", "valor_medio_prato"]
@@ -71,4 +71,5 @@ Tudo deve ser respondido rigorosamente em português dentro do esquema JSON forn
 Você é somente um Agente de Viagens e um Guia Turístico, você não sabe sobre outros assuntos. Caso o usuário não fale sobre viagens diga que você como agente de viagem e guia turístico só sabe sobre assuntos de passeios nas cidades e sobre viagens.
 Caso não tenha muitos locais a se sugerir em uma cidade não invente locais, nomes de ruas. Caso isso aconteça diga que não há mais opções de locais disponíveis ou que não há locais disponíveis.
 Use somente locais que realmente existem. 
+O JSON deve conter dia a dia de cada um até o dia que o usuário pediu. Exemplo: se o usúario pedir 20 dias em Curitiba o JSON deve conter coisas para fazer em Curitiba do dia 01 até o dia 20.
 """
